@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".PantallaMain">
+
+    <!-- Imagen de logo en la parte superior -->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="137dp"
+        android:layout_height="107dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="73dp"
+        android:contentDescription="Logo"
+        android:src="@drawable/up" />
+
+    <!-- Texto para realizar pago -->
+    <TextView
+        android:id="@+id/tv_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Realiza tu pago con:"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <!-- Botón circular para Clave Dinámica -->
+    <TextView
+        android:id="@+id/roundButton"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/tv_payment"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/round_button_background"
+        android:gravity="center"
+        android:text="Clave Dinámica"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="onRoundButtonClick" /> />
+
+    <!-- Barra inferior con opciones -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="#B00020"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- Botón de Comercios -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/btn_comercios"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="Comercios"
+                android:src="@android:drawable/ic_dialog_map" />
+
+            <TextView
+                android:id="@+id/tv_comercios"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comercios"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Botón de Saldo -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/btn_menu"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="Saldo"
+                android:src="@android:drawable/ic_input_add" />
+
+            <TextView
+                android:id="@+id/tv_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Menu"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Botón de Pagar -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/btn_pagar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="Pagar"
+                android:src="@android:drawable/btn_star_big_on" />
+        </LinearLayout>
+
+        <!-- Botón de Chat -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/btn_chat"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="Chat"
+                android:src="@android:drawable/ic_dialog_email" />
+
+            <TextView
+                android:id="@+id/tv_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chat"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Botón de Más -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/btn_mas"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:contentDescription="Más"
+                android:src="@android:drawable/ic_dialog_dialer" />
+            <TextView
+                android:id="@+id/tv_mas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Más"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
