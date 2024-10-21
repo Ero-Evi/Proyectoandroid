@@ -37,7 +37,7 @@ Este proyecto es una aplicación Android que ofrece varias funcionalidades esenc
 
 1. Clonar este repositorio:
    ```bash
-   git clone https://github.com/tuusuario/nombre-del-repositorio.git
+   git clone https://github.com/Ero-Evi/Proyectoandroid.git
 Abrir el proyecto en Android Studio.
 
 Asegurarse de que las siguientes dependencias estén agregadas en el archivo build.gradle:
