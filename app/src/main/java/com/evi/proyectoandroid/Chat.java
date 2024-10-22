@@ -41,7 +41,7 @@ public class Chat extends AppCompatActivity {
         ComercioImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Chat.this, Mapa.class);
+                Intent intent = new Intent(Chat.this, MapsActivity.class);
                 startActivity(intent);
             }
         });

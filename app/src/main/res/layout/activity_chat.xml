@@ -152,20 +152,14 @@
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
         android:background="#B00020"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-
-
-
-
-
-
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.947"
+        tools:layout_editor_absoluteX="0dp">
 
 
         <!-- Botón de Comercios -->

@@ -55,6 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
         android:background="#B00020"
         android:gravity="center"
         android:orientation="horizontal">
@@ -158,6 +159,7 @@
                 android:layout_height="40dp"
                 android:contentDescription="Más"
                 android:src="@android:drawable/ic_dialog_dialer" />
+
             <TextView
                 android:id="@+id/tv_mas"
                 android:layout_width="wrap_content"

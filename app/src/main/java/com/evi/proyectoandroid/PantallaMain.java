@@ -42,7 +42,7 @@ public class PantallaMain extends AppCompatActivity {
         ComercioImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PantallaMain.this, Mapa.class);
+                Intent intent = new Intent(PantallaMain.this, MapsActivity.class);
                 startActivity(intent);
             }
         });

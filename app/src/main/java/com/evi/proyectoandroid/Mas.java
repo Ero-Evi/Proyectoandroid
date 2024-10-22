@@ -41,7 +41,7 @@ public class Mas extends AppCompatActivity {
         ComercioImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Mas.this, Mapa.class);
+                Intent intent = new Intent(Mas.this, MapsActivity.class);
                 startActivity(intent);
             }
         });

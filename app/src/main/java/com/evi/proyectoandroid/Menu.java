@@ -41,7 +41,7 @@ public class Menu extends AppCompatActivity {
         ComercioImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, Mapa.class);
+                Intent intent = new Intent(Menu.this, MapsActivity.class);
                 startActivity(intent);
             }
         });
