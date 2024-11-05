@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -33,21 +32,61 @@
     <!-- Botón circular para Clave Dinámica -->
     <TextView
         android:id="@+id/roundButton"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="171dp"
+        android:layout_height="171dp"
         android:layout_below="@id/tv_payment"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:background="@drawable/round_button_background"
+        android:clickable="true"
+        android:focusable="true"
         android:gravity="center"
+        android:onClick="onRoundButtonClick"
         android:text="Clave Dinámica"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:clickable="true"
-        android:focusable="true"
-        android:onClick="onRoundButtonClick" /> />
+        android:textStyle="bold" />
+
+    <!-- ListView debajo del botón circular y encima de la barra de navegación -->
+    <!-- Mensaje de historial vacío -->
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="114dp"
+        android:layout_below="@id/roundButton"
+        android:layout_marginTop="21dp"
+        android:background="@color/material_dynamic_neutral70"
+        android:divider="@color/black"
+        android:dividerHeight="1dp"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/btnReclamos"
+        android:layout_width="145dp"
+        android:layout_height="65dp"
+        android:layout_below="@id/listView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/design_default_color_error"
+        android:onClick="onbtnReclamosClick"
+        android:text="Reclamos" />
+
+    <TextView
+        android:id="@+id/mensajeVacio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/bottom_nav"
+        android:layout_below="@id/roundButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="Aún no has comprado nada"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:visibility="gone" />
+
 
     <!-- Barra inferior con opciones -->
     <LinearLayout
@@ -55,7 +94,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="2dp"
         android:background="#B00020"
         android:gravity="center"
         android:orientation="horizontal">

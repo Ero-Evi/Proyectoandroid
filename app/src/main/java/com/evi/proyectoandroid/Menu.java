@@ -5,13 +5,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+
+
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.github.pdfviewer.PDFView;
+
 public class Menu extends AppCompatActivity {
+    private PDFView pdfView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,48 +25,31 @@ public class Menu extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_menu);
 
+        configurarBotonesInferiores();
+
+        PDFView pdfView = findViewById(R.id.pdfView);
+
+        // Cargar PDF desde assets
+        pdfView.fromAsset("menup.pdf")
+                .enableSwipe(true) // Permite el deslizamiento entre páginas
+                .swipeHorizontal(false) // Vertical o horizontal
+                .enableDoubletap(true) // Habilitar doble toque para zoom
+                .load();
+    }
+    private void configurarBotonesInferiores() {
         ImageView PagarImageView = findViewById(R.id.btn_pagar);
-        PagarImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, PantallaMain.class);
-                startActivity(intent);
-            }
-        });
+        PagarImageView.setOnClickListener(v -> startActivity(new Intent(Menu.this, PantallaMain.class)));
 
         ImageView MenuImageView = findViewById(R.id.btn_menu);
-        MenuImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, Menu.class);
-                startActivity(intent);
-            }
-        });
+        MenuImageView.setOnClickListener(v -> startActivity(new Intent(Menu.this, Menu.class)));
 
         ImageView ComercioImageView = findViewById(R.id.btn_comercios);
-        ComercioImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, MapsActivity.class);
-                startActivity(intent);
-            }
-        });
+        ComercioImageView.setOnClickListener(v -> startActivity(new Intent(Menu.this, MapsActivity.class)));
 
         ImageView ChatImageView = findViewById(R.id.btn_chat);
-        ChatImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, Chat.class);
-                startActivity(intent);
-            }
-        });
+        ChatImageView.setOnClickListener(v -> startActivity(new Intent(Menu.this, Chat.class)));
+
         ImageView MasImageView = findViewById(R.id.btn_mas);
-        MasImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, Mas.class);
-                startActivity(intent);
-            }
-        });
+        MasImageView.setOnClickListener(v -> startActivity(new Intent(Menu.this, Mas.class)));
     }
 }

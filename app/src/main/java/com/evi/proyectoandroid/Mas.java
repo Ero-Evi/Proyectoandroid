@@ -18,49 +18,22 @@ public class Mas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_mas);
-
+        configurarBotonesInferiores();
+    }
+    private void configurarBotonesInferiores() {
         ImageView PagarImageView = findViewById(R.id.btn_pagar);
-        PagarImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Mas.this, PantallaMain.class);
-                startActivity(intent);
-            }
-        });
+        PagarImageView.setOnClickListener(v -> startActivity(new Intent(Mas.this, PantallaMain.class)));
 
         ImageView MenuImageView = findViewById(R.id.btn_menu);
-        MenuImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Mas.this, Menu.class);
-                startActivity(intent);
-            }
-        });
+        MenuImageView.setOnClickListener(v -> startActivity(new Intent(Mas.this, Menu.class)));
 
         ImageView ComercioImageView = findViewById(R.id.btn_comercios);
-        ComercioImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Mas.this, MapsActivity.class);
-                startActivity(intent);
-            }
-        });
+        ComercioImageView.setOnClickListener(v -> startActivity(new Intent(Mas.this, MapsActivity.class)));
 
         ImageView ChatImageView = findViewById(R.id.btn_chat);
-        ChatImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Mas.this, Chat.class);
-                startActivity(intent);
-            }
-        });
+        ChatImageView.setOnClickListener(v -> startActivity(new Intent(Mas.this, Chat.class)));
+
         ImageView MasImageView = findViewById(R.id.btn_mas);
-        MasImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Mas.this, Mas.class);
-                startActivity(intent);
-            }
-        });
+        MasImageView.setOnClickListener(v -> startActivity(new Intent(Mas.this, Mas.class)));
     }
 }
