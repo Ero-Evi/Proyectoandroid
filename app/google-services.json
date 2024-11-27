@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "282956175156",
+    "firebase_url": "https://evibdfinal-default-rtdb.firebaseio.com",
+    "project_id": "evibdfinal",
+    "storage_bucket": "evibdfinal.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282956175156:android:bd6fa062d9c5f28a063761",
+        "android_client_info": {
+          "package_name": "com.evi.proyectoandroid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_Bvs3K8xp6TcE3tE8kIA1vQ3NF-deD3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

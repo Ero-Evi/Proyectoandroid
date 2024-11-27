@@ -2,6 +2,7 @@ package com.evi.proyectoandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -9,15 +10,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Random;
 
 public class PantallaMain extends AppCompatActivity {
@@ -25,6 +32,7 @@ public class PantallaMain extends AppCompatActivity {
     private TextView mensajeVacio;
     private BD database;
     private ArrayAdapter<String> adapter;
+    private MqttHandler mqttHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,9 @@ public class PantallaMain extends AppCompatActivity {
         mensajeVacio = findViewById(R.id.mensajeVacio);
         mostrarHistorial();
         configurarBotonesInferiores();
+        // Inicializar el manejador de MQTT
+        mqttHandler = new MqttHandler();
+        mqttHandler.connect("tcp://broker.emqx.io:1883", "AndroidClient");
 
 
     }
@@ -87,23 +98,59 @@ public class PantallaMain extends AppCompatActivity {
         // Opciones para el campo "Local"
         String[] locales = {"Constitución", "El Roble", "20 de Agosto"};
 
-        // Selecciona un local al azar ya que no tengo como hacer que me llegue el valor real aun. para tener mas variedad en la BD
+        // Selecciona un local al azar
         String localAleatorio = locales[new Random().nextInt(locales.length)];
 
-        // me generara aleatoria mente el valor total por ahora ya que no tengo como hacer que me llegue el valor real aun.
+        // Generar aleatoriamente el valor total
         int totalAleatorio = 6000 + new Random().nextInt(44001);
 
-        // Fecha en formato "dd/MM/yyyy" despues agregare la hora tamien si no se me olvida
+        // Fecha en formato "dd/MM/yyyy"
         String fechaActual = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
-        // Insertar la transacción en la base de datos
+        // Insertar la transacción en la base de datos SQLite
         boolean insertado = database.insertTransaccion(localAleatorio, fechaActual, totalAleatorio);
 
         if (insertado) {
             // Actualizar la lista de transacciones en el ListView
             mostrarHistorial();
+
+            // Crear un objeto de datos para Firebase y MQTT
+            Map<String, Object> transaccion = new HashMap<>();
+            transaccion.put("Local", localAleatorio);
+            transaccion.put("Fecha", fechaActual);
+            transaccion.put("Total", totalAleatorio);
+
+            // Enviar los datos al servidor MQTT
+            String mensajeMQTT = String.format(
+                    "{\"Local\": \"%s\", \"Fecha\": \"%s\", \"Total\": %.2f}",
+                    localAleatorio, fechaActual, (double) totalAleatorio
+            );
+
+            if (mqttHandler != null) { // Asegúrate de que mqttHandler esté inicializado
+                mqttHandler.publish("transacciones/nuevas", mensajeMQTT);
+            } else {
+                Log.e("onRoundButtonClick", "El manejador MQTT no está inicializado.");
+            }
+
+            // Enviar los datos a Firebase Realtime Database
+            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Transacciones");
+            databaseReference.push().setValue(transaccion)
+                    .addOnSuccessListener(aVoid -> Log.i("onRoundButtonClick", "Transacción guardada en Firebase Realtime Database."))
+                    .addOnFailureListener(e -> Log.e("onRoundButtonClick", "Error al guardar en Firebase Realtime Database: " + e.getMessage()));
+
+            // Enviar los datos a Firebase Firestore (opcional)
+            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+            firestore.collection("Transacciones")
+                    .add(transaccion)
+                    .addOnSuccessListener(documentReference -> Log.i("onRoundButtonClick", "Transacción guardada en Firestore con ID: " + documentReference.getId()))
+                    .addOnFailureListener(e -> Log.e("onRoundButtonClick", "Error al guardar en Firestore: " + e.getMessage()));
+
+        } else {
+            // Manejo de error en caso de que no se pueda insertar en la base de datos SQLite
+            Log.e("onRoundButtonClick", "Error al insertar la transacción en SQLite.");
         }
     }
+
     public void onbtnReclamosClick(View view) {
         ArrayList<HashMap<String, String>> historialTransacciones = database.getAllTransacciones();
 
