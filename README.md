@@ -67,3 +67,14 @@ Tecnologías Utilizadas
 - Google Maps API: Para la funcionalidad de mapa.
 - *Android PDF Viewer: Para visualizar el menú en formato PDF.* Por Agregar
 - *Intents para llamadas y WhatsApp: Permite la interacción con aplicaciones externas para llamadas y mensajería.* Por Agregar
+
+
+
+
+
+![image](https://github.com/user-attachments/assets/1289d447-ab8d-43c1-830e-9ab917b46eca)
+
+![image](https://github.com/user-attachments/assets/c37d5c8c-b26e-4438-bcf8-2a10e1910002)
+![image](https://github.com/user-attachments/assets/9f389303-d64d-4366-92e3-8449c0112942)
+![image](https://github.com/user-attachments/assets/fe586a06-9375-4f05-b1d5-88c2fa664498)
+![image](https://github.com/user-attachments/assets/adf98cf9-779f-422a-9c82-a10771a271d3)
