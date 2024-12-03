@@ -78,3 +78,7 @@ Tecnologías Utilizadas
 ![image](https://github.com/user-attachments/assets/9f389303-d64d-4366-92e3-8449c0112942)
 ![image](https://github.com/user-attachments/assets/fe586a06-9375-4f05-b1d5-88c2fa664498)
 ![image](https://github.com/user-attachments/assets/adf98cf9-779f-422a-9c82-a10771a271d3)
+![image](https://github.com/user-attachments/assets/28a36459-e0b9-42de-ba73-2d67ef82c67d)
+![image](https://github.com/user-attachments/assets/c77cdb50-9552-4ee0-b189-9295b8d9242d)
+![image](https://github.com/user-attachments/assets/78df2581-f4d4-4480-891b-97308de32417)
+![image](https://github.com/user-attachments/assets/d7488aed-c9ee-4c44-b26e-b6425af8e96a)
